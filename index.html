@@ -7,20 +7,20 @@
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/style.css" />
   </head>
 
   <body>
     <nav>
-      <a href="#home" class="active">首页</a>
-      <a href="#about">关于</a>
-      <a href="#timeline">历程</a>
-      <a href="#website">站点</a>
+      <a href="#" id="home" class="active">首页</a>
+      <a href="#" id="about">关于</a>
+      <a href="#" id="timeline">历程</a>
+      <a href="#" id="website">站点</a>
     </nav>
 
     <main>
-      <section id="home">
-        <img src="image/bg.jpg" alt="背景" width="100%" />
+      <section title="home">
+        <img src="assets/images/bg.jpg" id="bg" alt="背景" />
         <img
           src="https://q1.qlogo.cn/g?b=qq&nk=2063550364&s=640"
           class="avatar"
@@ -30,25 +30,9 @@
           <h2>景昇</h2>
           <h5>心存敬畏 行有所止</h5>
         </div>
-        <div class="link">
-          <a href="mailto:uninto@icloud.com" target="_blank">
-            <img src="image/link/mail.svg" alt="icon" />
-          </a>
-          <a href="https://b23.tv/iDh4oum" target="_blank">
-            <img src="image/link/bilibili.svg" alt="icon" />
-          </a>
-          <a href="https://weibo.com/u/6476668327" target="_blank">
-            <img src="image/link/weibo.svg" alt="icon" />
-          </a>
-          <a href="https://github.com/uninto" target="_blank">
-            <img src="image/link/github.svg" alt="icon" />
-          </a>
-          <a href="https://t.me/uninto" target="_blank">
-            <img src="image/link/telegram.svg" alt="icon" />
-          </a>
-        </div>
+        <div id="link"></div>
       </section>
-      <section id="about">
+      <section title="about">
         <div class="item" style="flex-grow: 1; margin-bottom: 15px">
           <h3># 关于我</h3>
           <p style="text-indent: 2em">
@@ -61,44 +45,30 @@
           <p>- [x] JavaScript</p>
           <p>- [x] ...</p>
         </div>
-        <div class="item">
-          <h3># 特别感谢</h3>
-          <h5>
-            - 图标来自:
-            <a
-              href="https://github.com/Remix-Design/RemixIcon"
-              target="_blank"
-              style="color: black; text-decoration: underline"
-              >REMIX ICON</a
-            >
-          </h5>
-          <h5>
-            - 字体来自:
-            <a
-              href="https://github.com/ButTaiwan/gensen-font"
-              target="_blank"
-              style="color: black; text-decoration: underline"
-              >源泉圆体</a
-            >
-          </h5>
-          <h5>
-            - 天气来自:
-            <a
-              href="https://www.seniverse.com"
-              target="_blank"
-              style="color: black; text-decoration: underline"
-              >心知天气</a
-            >
-          </h5>
+        <div id="project" class="item">
+          <h3># 项目地址</h3>
+          <div>
+            <a href="https://gitee.com/uninto/homePage" target="_blank">
+              <img
+                src="assets/images/icon/gitee-fill.svg"
+                alt="gitee"
+                width="20px"
+                style="margin-right: 10px"
+              />
+            </a>
+            <a href="https://github.com/uninto/homePage" target="_blank">
+              <img src="assets/images/icon/github-fill.svg" alt="github" width="20px" />
+            </a>
+          </div>
         </div>
       </section>
-      <section id="timeline">
+      <section title="timeline">
         <div class="item">
-          <ul id="line"></ul>
+          <ul id="line" class="scrollbar"></ul>
         </div>
       </section>
-      <section id="website">
-        <ul id="site"></ul>
+      <section title="website">
+        <ul id="site" class="scrollbar"></ul>
       </section>
     </main>
     <footer>
@@ -113,10 +83,10 @@
     </footer>
     <div id="tp-weather-widget"></div>
     <img
-      src="image/China.svg"
+      src="assets/images/China.svg"
       alt="China"
       style="width: 70px; position: fixed; right: 10px; bottom: 30px"
     />
-    <script src="index.js"></script>
+    <script src="assets/index.js"></script>
   </body>
 </html>
