@@ -6,17 +6,34 @@
  * 请勿删除，感谢
 */
 
+:root {
+  --body-color: #ecf0f3;
+  --main-color: #fff;
+  --shadow-color: #e6e6eb;
+  --text-color: #424242;
+  --icon-color: invert(0%);
+}
+
+[theme='dark'] {
+  --body-color: #343434;
+  --main-color: #484848;
+  --shadow-color: #303030;
+  --text-color: #ccc;
+  --icon-color: invert(90%);
+}
+
 * {
   margin: 0;
   padding: 0;
   border-radius: 8px;
   box-sizing: border-box;
   font-family: 'GenSenRounded';
+  transition: background-color 0.3s ease;
   line-height: 1.3;
 }
 
 a {
-  color: #424242;
+  color: var(--text-color);
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   transition: all 0.3s ease;
@@ -32,16 +49,16 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #ecf0f3;
+  background-color: var(--body-color);
 }
 
 nav {
   width: 400px;
   height: 50px;
   max-width: 90%;
-  background-color: #fff;
+  background-color: var(--main-color);
   margin-bottom: 15px;
-  box-shadow: 1px 1px 1px 1px #e6e6eb;
+  box-shadow: 1px 1px 1px 1px var(--shadow-color);
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -49,12 +66,15 @@ nav {
 
 nav a {
   font-size: large;
-  color: #aaa;
+}
+
+nav img {
+  filter: var(--icon-color);
 }
 
 .active {
   transform: scale(1.1);
-  color: #1d1d1f;
+  color: #2ecc71;
 }
 
 main {
@@ -63,8 +83,8 @@ main {
   max-width: 90%;
   margin-bottom: 60px;
   position: relative;
-  background-color: #fff;
-  box-shadow: 1px 1px 1px 1px #e6e6eb;
+  background-color: var(--main-color);
+  box-shadow: 1px 1px 1px 1px var(--shadow-color);
   scroll-snap-type: x mandatory;
   display: flex;
   overflow: auto;
@@ -89,7 +109,7 @@ section {
 #bg {
   width: 100%;
   height: 50%;
-  background-color: #eee;
+  background-color: var(--body-color);
   object-fit: cover;
 }
 
@@ -107,7 +127,7 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #1d1d1f;
+  color: var(--text-color);
 }
 
 #link {
@@ -119,14 +139,15 @@ section {
 
 #link img {
   width: 30px;
+  filter: var(--icon-color);
 }
 
 .item {
   width: 100%;
   height: 100%;
   padding: 10px;
-  box-shadow: inset 0 0 2px 3px #e6e6eb;
-  color: #424242;
+  box-shadow: inset 0 0 2px 3px var(--shadow-color);
+  color: var(--text-color);
 }
 
 #project {
@@ -140,6 +161,7 @@ section {
 #project img {
   width: 25px;
   margin-left: 10px;
+  filter: var(--icon-color);
 }
 
 #line {
@@ -155,7 +177,7 @@ section {
 
 #line::-webkit-scrollbar-track {
   border-radius: 8px;
-  background-color: #eee;
+  background-color: var(--body-color);
 }
 
 #line::-webkit-scrollbar-thumb {
@@ -166,7 +188,7 @@ section {
 #line li {
   position: relative;
   padding: 15px 0px 0px 15px;
-  border-left: 3px solid #eee;
+  border-left: 3px solid #aaa;
   border-radius: 0;
   scroll-snap-align: end;
   color: #aaa;
@@ -181,8 +203,8 @@ section {
   width: 15px;
   height: 15px;
   border-radius: 22px;
-  background-color: #ccc;
-  border: 3px solid #fff;
+  background-color: #aaa;
+  border: 3px solid var(--main-color);
   position: absolute;
   left: -9px;
   top: 50%;
@@ -207,8 +229,8 @@ section {
   position: relative;
   background-image: repeating-linear-gradient(
     -45deg,
-    #f1f1f1,
-    #f5f5f5 1.125rem,
+    var(--body-color),
+    1.125rem,
     transparent 1.125rem,
     transparent 2.25rem
   );
@@ -236,8 +258,8 @@ footer {
   line-height: 40px;
   border-radius: 0;
   text-align: center;
-  background-color: #fff;
-  box-shadow: -1px -1px 1px #e6e6eb;
+  background-color: var(--main-color);
+  box-shadow: -1px -1px 1px var(--shadow-color);
   font-size: 13px;
   position: fixed;
   bottom: 0px;
@@ -250,7 +272,7 @@ footer {
 
 @keyframes focus {
   0% {
-    box-shadow: 0px 0px 0px 0px #fff;
+    box-shadow: 0px 0px 0px 0px;
   }
 
   50% {
@@ -258,6 +280,6 @@ footer {
   }
 
   100% {
-    box-shadow: 0px 0px 0px 0px #fff;
+    box-shadow: 0px 0px 0px 0px;
   }
 }

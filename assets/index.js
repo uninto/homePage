@@ -6,12 +6,34 @@
  * 请勿删除，感谢
  */
 
+const dom = document.documentElement
 const link = document.querySelector('#link')
 const line = document.querySelector('#line')
 const site = document.querySelector('#site')
+const darkMode = document.querySelector('#darkMode')
+let mode = JSON.parse(localStorage.getItem('darkMode')) || false
+
+// 判断是否为深色模式
+if (mode) {
+  darkMode.src = 'assets/images/icon/moon.svg'
+  dom.setAttribute('theme', 'dark')
+}
+
+// 切换深色模式
+darkMode.addEventListener('click', () => {
+  if (mode) {
+    darkMode.src = 'assets/images/icon/sun.svg'
+    dom.removeAttribute('theme')
+  } else {
+    darkMode.src = 'assets/images/icon/moon.svg'
+    dom.setAttribute('theme', 'dark')
+  }
+  mode = !mode
+  localStorage.setItem('darkMode', mode)
+})
 
 // 声明一个函数,用于添加数据
-function addData(parent, html) {
+const addData = (parent, html) => {
   const li = document.createElement('li')
   li.innerHTML = html
   parent.appendChild(li)
