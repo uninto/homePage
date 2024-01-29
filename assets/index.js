@@ -41,7 +41,7 @@ const addData = (parent, html) => {
 }
 
 //* 获取数据
-fetch('./../data.json')
+fetch('../data.json')
   .then(res => res.json())
   .then(data => {
     const { iconList, lineList, siteList } = data
