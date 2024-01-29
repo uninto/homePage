@@ -10,6 +10,7 @@ const dom = document.documentElement
 const link = document.querySelector('#link')
 const line = document.querySelector('#line')
 const site = document.querySelector('#site')
+const music = document.querySelector('audio')
 const darkMode = document.querySelector('#darkMode')
 let mode = JSON.parse(localStorage.getItem('darkMode')) || false
 
@@ -40,7 +41,7 @@ const addData = (parent, html) => {
 }
 
 //* 获取数据
-fetch('../data.json')
+fetch('./../data.json')
   .then(res => res.json())
   .then(data => {
     const { iconList, lineList, siteList } = data
@@ -119,6 +120,23 @@ document.querySelector('main').addEventListener('scroll', e => {
       }
     })
   }, 200) // 延迟200毫秒执行
+})
+
+//* 音乐功能
+let isPlay = false
+// 监听音乐按钮点击事件
+document.querySelector('#music').addEventListener('click', function () {
+  // 判断音乐是否在播放
+  if (isPlay) {
+    // 播放音乐
+    music.pause()
+    this.src = 'assets/images/icon/play.svg'
+  } else {
+    // 暂停音乐
+    music.play()
+    this.src = 'assets/images/icon/pause.svg'
+  }
+  isPlay = !isPlay
 })
 
 //* 天气插件-心知天气
