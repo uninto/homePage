@@ -12,7 +12,7 @@
   border-radius: 8px;
   box-sizing: border-box;
   font-family: 'GenSenRounded';
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
 a {
@@ -36,8 +36,9 @@ body {
 }
 
 nav {
-  width: 300px;
-  height: 40px;
+  width: 400px;
+  height: 50px;
+  max-width: 90%;
   background-color: #fff;
   margin-bottom: 15px;
   box-shadow: 1px 1px 1px 1px #e6e6eb;
@@ -47,26 +48,30 @@ nav {
 }
 
 nav a {
+  font-size: large;
   color: #aaa;
 }
 
 .active {
-  transform: scale(1.15);
+  transform: scale(1.1);
   color: #1d1d1f;
 }
 
 main {
-  width: 300px;
-  height: 360px;
-  display: flex;
+  width: 400px;
+  height: 450px;
+  max-width: 90%;
+  margin-bottom: 60px;
   position: relative;
   background-color: #fff;
   box-shadow: 1px 1px 1px 1px #e6e6eb;
   scroll-snap-type: x mandatory;
+  display: flex;
   overflow: auto;
 }
 
-main::-webkit-scrollbar {
+main::-webkit-scrollbar,
+#site::-webkit-scrollbar {
   display: none;
 }
 
@@ -89,10 +94,10 @@ section {
 }
 
 .avatar {
-  width: 80px;
+  width: 90px;
   border-radius: 50%;
   position: absolute;
-  top: 40%;
+  top: 42%;
 }
 
 .info {
@@ -102,7 +107,6 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-shadow: 1px 1px 1px #eee;
   color: #1d1d1f;
 }
 
@@ -114,29 +118,49 @@ section {
 }
 
 #link img {
-  width: 25px;
+  width: 30px;
 }
 
 .item {
   width: 100%;
+  height: 100%;
   padding: 10px;
-  background-color: #fff;
   box-shadow: inset 0 0 2px 3px #e6e6eb;
   color: #424242;
 }
 
 #project {
+  height: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 15px;
+}
+
+#project img {
+  width: 25px;
+  margin-left: 10px;
 }
 
 #line {
-  width: 100%;
-  height: 310px;
+  height: 100%;
   padding-left: 10px;
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
+}
+
+#line::-webkit-scrollbar {
+  width: 6px;
+}
+
+#line::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #eee;
+}
+
+#line::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #ccc;
 }
 
 #line li {
@@ -171,12 +195,10 @@ section {
 
 #site {
   width: 100%;
-  height: 330px;
   overflow: auto;
 }
 
 #site li {
-  width: 96%;
   height: 60px;
   padding: 10px;
   cursor: pointer;
@@ -190,8 +212,6 @@ section {
     transparent 1.125rem,
     transparent 2.25rem
   );
-  background-size: 200% 200%;
-  animation: slide 3s linear infinite;
   transition: all 0.2s ease-in;
   overflow: hidden;
 }
@@ -201,7 +221,6 @@ section {
 }
 
 #site li:hover {
-  transform: scale(0.96);
   line-height: 20px;
 }
 
@@ -209,20 +228,6 @@ section {
   position: absolute;
   right: 10px;
   top: 5px;
-}
-
-.scrollbar::-webkit-scrollbar {
-  width: 5px;
-}
-
-.scrollbar::-webkit-scrollbar-track {
-  border-radius: 8px;
-  background-color: #eee;
-}
-
-.scrollbar::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  background-color: #ccc;
 }
 
 footer {
@@ -241,15 +246,6 @@ footer {
 @font-face {
   font-family: 'GenSenRounded';
   src: url('GenSenRounded-R.woff2');
-}
-
-@keyframes slide {
-  from {
-    background-position: 0;
-  }
-  to {
-    background-position: 100%;
-  }
 }
 
 @keyframes focus {

@@ -91,6 +91,18 @@
       "content": "360搜索",
       "url": "https://www.so.com/",
       "status": true
+    },
+    {
+      "name": "搜狗",
+      "content": "搜狗搜索",
+      "url": "https://sogou.com/",
+      "status": true
+    },
+    {
+      "name": "360",
+      "content": "360搜索",
+      "url": "https://www.so.com/",
+      "status": true
     }
   ]
 }

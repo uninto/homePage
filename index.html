@@ -18,7 +18,7 @@
       <a href="#" id="website">站点</a>
     </nav>
 
-    <main>
+    <main class="scrollbar">
       <section title="home">
         <img src="assets/images/bg.jpg" id="bg" alt="背景" />
         <img
@@ -28,12 +28,12 @@
         />
         <div class="info">
           <h2>景昇</h2>
-          <h5>心存敬畏 行有所止</h5>
+          <h4>心存敬畏 行有所止</h4>
         </div>
         <div id="link"></div>
       </section>
       <section title="about">
-        <div class="item" style="flex-grow: 1; margin-bottom: 15px">
+        <div class="item">
           <h3># 关于我</h3>
           <p style="text-indent: 2em">
             嗨！我是景昇，
@@ -44,31 +44,55 @@
           <p>- [x] CSS</p>
           <p>- [x] JavaScript</p>
           <p>- [x] ...</p>
+          <br />
+          <h3># 特别感谢</h3>
+          <h5>
+            - 图标来自:
+            <a
+              href="https://github.com/Remix-Design/RemixIcon"
+              target="_blank"
+              style="color: black; text-decoration: underline"
+              >REMIX ICON</a
+            >
+          </h5>
+          <h5>
+            - 字体来自:
+            <a
+              href="https://github.com/ButTaiwan/gensen-font"
+              target="_blank"
+              style="color: black; text-decoration: underline"
+              >源泉圆体</a
+            >
+          </h5>
+          <h5>
+            - 天气来自:
+            <a
+              href="https://www.seniverse.com"
+              target="_blank"
+              style="color: black; text-decoration: underline"
+              >心知天气</a
+            >
+          </h5>
         </div>
         <div id="project" class="item">
           <h3># 项目地址</h3>
           <div>
             <a href="https://gitee.com/uninto/homePage" target="_blank">
-              <img
-                src="assets/images/icon/gitee-fill.svg"
-                alt="gitee"
-                width="20px"
-                style="margin-right: 10px"
-              />
+              <img src="assets/images/icon/gitee-fill.svg" alt="gitee" />
             </a>
             <a href="https://github.com/uninto/homePage" target="_blank">
-              <img src="assets/images/icon/github-fill.svg" alt="github" width="20px" />
+              <img src="assets/images/icon/github-fill.svg" alt="github" />
             </a>
           </div>
         </div>
       </section>
       <section title="timeline">
         <div class="item">
-          <ul id="line" class="scrollbar"></ul>
+          <ul id="line"></ul>
         </div>
       </section>
       <section title="website">
-        <ul id="site" class="scrollbar"></ul>
+        <ul id="site"></ul>
       </section>
     </main>
     <footer>
