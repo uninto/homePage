@@ -111,8 +111,8 @@ document.querySelector('main').addEventListener('scroll', e => {
   timer = setTimeout(() => {
     // 获取所有的section元素并遍历
     document.querySelectorAll('section').forEach(item => {
-      // 判断滚动条的位置是否等于当前元素的offsetLeft值
-      if (e.target.scrollLeft === item.offsetLeft) {
+      // 判断当前元素的offsetLeft值是否等于滚动条的scrollLeft值
+      if (Math.round(e.target.scrollLeft) === item.offsetLeft) {
         // 先移除active类名,再给当前元素对应的A标签添加active类名
         document.querySelector('.active').classList.remove('active')
         document.querySelector(`#${item.title}`).classList.add('active')
