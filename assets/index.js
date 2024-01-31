@@ -40,7 +40,7 @@ const addData = (parent, html) => {
   parent.appendChild(li)
 }
 
-//* 获取数据
+// 获取数据
 fetch('../data.json')
   .then(res => res.json())
   .then(data => {
@@ -86,7 +86,7 @@ fetch('../data.json')
     }
   })
 
-//* 点击页面切换
+// 点击页面切换
 document.querySelector('nav').addEventListener('click', e => {
   // 事件委托,判断点击的元素是否为A标签
   if (e.target.tagName === 'A') {
@@ -101,7 +101,7 @@ document.querySelector('nav').addEventListener('click', e => {
   }
 })
 
-//* 滑动页面切换Tab
+// 滑动页面切换Tab
 let timer = null
 // 监听滚动事件,并设置防抖
 document.querySelector('main').addEventListener('scroll', e => {
@@ -122,7 +122,7 @@ document.querySelector('main').addEventListener('scroll', e => {
   }, 200) // 延迟200毫秒执行
 })
 
-//* 音乐功能
+// 音乐功能
 let isPlay = false
 // 监听音乐按钮点击事件
 document.querySelector('#music').addEventListener('click', function () {
@@ -139,7 +139,7 @@ document.querySelector('#music').addEventListener('click', function () {
   isPlay = !isPlay
 })
 
-//* 天气插件-心知天气
+// 天气插件
 !(function (a, h, g, f, e, d, c, b) {
   b = function () {
     d = h.createElement(g)
