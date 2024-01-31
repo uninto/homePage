@@ -103,7 +103,7 @@ document.querySelector('nav').addEventListener('click', e => {
 
 // 滑动页面切换Tab
 let timer = null
-// 监听滚动事件,并设置防抖
+// 监听滚动事件，并设置防抖
 document.querySelector('main').addEventListener('scroll', e => {
   // 先清除定时器
   if (timer) clearTimeout(timer)
@@ -111,9 +111,9 @@ document.querySelector('main').addEventListener('scroll', e => {
   timer = setTimeout(() => {
     // 获取所有的section元素并遍历
     document.querySelectorAll('section').forEach(item => {
-      // 判断当前元素的offsetLeft值是否等于滚动条的scrollLeft值(因为精确问题,所以使用toFixed(0)方法
-      if (e.target.scrollLeft.toFixed(0) === item.offsetLeft.toFixed(0)) {
-        // 先移除active类名,再给当前元素对应的A标签添加active类名
+      // 判断当前元素的offsetLeft值与滚动条的scrollLeft值的差的绝对值是否小于误差阈值
+      if (Math.abs(e.target.scrollLeft - item.offsetLeft) < 50) {
+        // 先移除active类名，再给当前元素对应的A标签添加active类名
         document.querySelector('.active').classList.remove('active')
         document.querySelector(`#${item.title}`).classList.add('active')
         return
