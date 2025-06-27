@@ -1,119 +1,127 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <title>个人主页</title>
-    <meta
-      charset="utf-8"
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-    />
-    <link rel="stylesheet" href="assets/style.css" />
-  </head>
+	<head>
+		<title>个人主页</title>
+		<meta
+			charset="utf-8"
+			name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+		/>
+		<link rel="stylesheet" href="assets/style.css" />
+	</head>
 
-  <body>
-    <nav>
-      <a href="#" id="home" class="active">首页</a>
-      <a href="#" id="about">关于</a>
-      <a href="#" id="timeline">历程</a>
-      <a href="#" id="website">站点</a>
-      <img src="assets/images/icon/play.svg" id="music" alt="music" />
-      <img src="assets/images/icon/sun.svg" id="darkMode" alt="darkMode" />
-    </nav>
+	<body>
+		<nav>
+			<span id="home" class="active">首页</span>
+			<span id="about">关于</span>
+			<span id="timeline">历程</span>
+			<span id="website">站点</span>
+			<img src="assets/images/icon/play.svg" id="music" alt="music" />
+			<img src="assets/images/icon/sun.svg" id="darkMode" alt="darkMode" />
+		</nav>
 
-    <main class="scrollbar">
-      <section title="home">
-        <img src="assets/images/bg.jpg" id="bg" alt="背景" />
-        <img
-          src="https://q1.qlogo.cn/g?b=qq&nk=2063550364&s=640"
-          class="avatar"
-          onclick="alert('戳我干嘛 ￣へ￣')"
-        />
-        <div class="info">
-          <h2>景昇</h2>
-          <h4>心存敬畏 行有所止</h4>
-        </div>
-        <div id="link"></div>
-      </section>
-      <section title="about">
-        <div class="item">
-          <h3># 关于我</h3>
-          <p style="text-indent: 2em">
-            嗨！我是景昇，
-            一个热爱前端开发的小白，高三那年无聊在教室里写了本项目的最初版，此刻，不用任何框架，做到更好！
-          </p>
-          <br />
-          <p>- [x] HTML</p>
-          <p>- [x] CSS</p>
-          <p>- [x] JavaScript</p>
-          <p>- [x] ...</p>
-          <br />
-          <h3># 特别感谢</h3>
-          <h5>
-            - 图标来自:
-            <a
-              href="https://github.com/Remix-Design/RemixIcon"
-              target="_blank"
-              style="text-decoration: underline"
-              >REMIX ICON</a
-            >
-          </h5>
-          <h5>
-            - 字体来自:
-            <a
-              href="https://github.com/ButTaiwan/gensen-font"
-              target="_blank"
-              style="text-decoration: underline"
-              >源泉圆体</a
-            >
-          </h5>
-          <h5>
-            - 天气来自:
-            <a href="https://www.seniverse.com" target="_blank" style="text-decoration: underline"
-              >心知天气</a
-            >
-          </h5>
-        </div>
-        <div id="project" class="item">
-          <h3># 项目地址</h3>
-          <div>
-            <a href="https://gitee.com/uninto/homePage" target="_blank">
-              <img src="assets/images/icon/gitee-fill.svg" alt="gitee" />
-            </a>
-            <a href="https://github.com/uninto/homePage" target="_blank">
-              <img src="assets/images/icon/github-fill.svg" alt="github" />
-            </a>
-          </div>
-        </div>
-      </section>
-      <section title="timeline">
-        <div class="item">
-          <ul id="line"></ul>
-        </div>
-      </section>
-      <section title="website">
-        <ul id="site"></ul>
-      </section>
-    </main>
-    <footer>
-      <a href="http://beian.miit.gov.cn/" target="_blank"> 豫ICP备2022025333号 </a>
-      &nbsp;|&nbsp;
-      <a
-        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41061102000322"
-        target="_blank"
-      >
-        豫公网安备41061102000322号
-      </a>
-    </footer>
-    <div id="tp-weather-widget"></div>
-    <img
-      src="assets/images/China.svg"
-      alt="China"
-      style="width: 70px; position: fixed; right: 10px; bottom: 40px"
-    />
-    <audio preload="load" id="music" loop="loop">
-      <!-- 未来音乐链接可能会失效，可自行更换 -->
-      <source src="https://uninto.com/runfree.mp3" />
-    </audio>
-    <script src="assets/index.js"></script>
-  </body>
+		<main class="scrollbar">
+			<section title="home">
+				<img src="assets/images/bg.jpg" id="bg" alt="背景" />
+				<img
+					src="https://q1.qlogo.cn/g?b=qq&nk=2063550364&s=640"
+					class="avatar"
+					onclick="alert('戳我干嘛 ￣へ￣')"
+				/>
+				<div class="info">
+					<h2>景昇</h2>
+					<h4>心存敬畏 行有所止</h4>
+				</div>
+				<div id="link"></div>
+			</section>
+			<section title="about">
+				<div class="item">
+					<h3># 关于我</h3>
+					<p style="text-indent: 2em">
+						嗨！我是景昇，
+						一个热爱前端开发的小白，高三那年无聊在教室里写了本项目的最初版，此刻，不用任何框架，做到更好！
+					</p>
+					<br />
+					<p>- [x] HTML</p>
+					<p>- [x] CSS</p>
+					<p>- [x] JavaScript</p>
+					<p>- [x] ...</p>
+					<br />
+					<h3># 特别感谢</h3>
+					<h5>
+						- 图标来自:
+						<a
+							href="https://github.com/Remix-Design/RemixIcon"
+							target="_blank"
+							style="text-decoration: underline"
+						>
+							REMIX ICON
+						</a>
+					</h5>
+					<h5>
+						- 字体来自:
+						<a
+							href="https://github.com/ButTaiwan/gensen-font"
+							target="_blank"
+							style="text-decoration: underline"
+						>
+							源泉圆体
+						</a>
+					</h5>
+					<h5>
+						- 天气来自:
+						<a
+							href="https://www.seniverse.com"
+							target="_blank"
+							style="text-decoration: underline"
+						>
+							心知天气
+						</a>
+					</h5>
+				</div>
+				<div id="project" class="item">
+					<h3># 项目地址</h3>
+					<div>
+						<a href="https://gitee.com/uninto/homePage" target="_blank">
+							<img src="assets/images/icon/gitee-fill.svg" alt="gitee" />
+						</a>
+						<a href="https://github.com/uninto/homePage" target="_blank">
+							<img src="assets/images/icon/github-fill.svg" alt="github" />
+						</a>
+					</div>
+				</div>
+			</section>
+			<section title="timeline">
+				<div class="item">
+					<ul id="line"></ul>
+				</div>
+			</section>
+			<section title="website">
+				<ul id="site"></ul>
+			</section>
+		</main>
+		<footer>
+			<a href="http://beian.miit.gov.cn/" target="_blank">
+				豫ICP备2022025333号
+			</a>
+			&nbsp;|&nbsp;
+			<a
+				href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41061102000322"
+				target="_blank"
+			>
+				豫公网安备41061102000322号
+			</a>
+		</footer>
+		<div id="tp-weather-widget"></div>
+		<img
+			src="assets/images/China.svg"
+			alt="China"
+			style="width: 70px; position: fixed; right: 10px; bottom: 40px"
+		/>
+		<audio preload="load" id="music" loop="loop">
+			<!-- 未来音乐链接可能会失效，可自行更换 -->
+			<source src="https://uninto.com/runfree.mp3" />
+		</audio>
+		<script src="assets/index.js"></script>
+	</body>
 </html>

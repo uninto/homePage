@@ -31,14 +31,13 @@
 	box-sizing: border-box;
 	font-family: 'GenSenRounded';
 	transition: background-color 0.8s ease, box-shadow 0.8s ease, border 0.8s ease;
+	-webkit-tap-highlight-color: transparent;
 	line-height: 1.3;
 }
 
 a {
 	color: var(--text-color);
 	text-decoration: none;
-	-webkit-tap-highlight-color: transparent;
-	transition: all 0.3s ease;
 }
 
 li {
@@ -67,8 +66,10 @@ nav {
 	align-items: center;
 }
 
-nav a {
+nav span {
 	font-size: large;
+	transition: all 0.3s ease;
+	cursor: pointer;
 }
 
 nav img {
@@ -89,6 +90,7 @@ main {
 	background-color: var(--main-color);
 	box-shadow: 1px 1px 1px 1px var(--shadow-color);
 	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
 	display: flex;
 	overflow: auto;
 }
@@ -233,10 +235,6 @@ section {
 	border: 2px solid var(--other-color);
 	transition: line-height 0.2s ease-in;
 	overflow: hidden;
-}
-
-#site li:last-child {
-	margin-bottom: 0;
 }
 
 #site li:hover {
