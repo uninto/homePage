@@ -16,12 +16,17 @@ const main = $('main')
 const link = $('#link')
 const line = $('#line')
 const site = $('#site')
-const music = $('audio')
+const audio = $('audio')
+const music = $('#music')
 const darkMode = $('#darkMode')
 const dom = document.documentElement
 const sections = document.querySelectorAll('section')
 
+// 主题模式
 let theme = JSON.parse(localStorage.getItem('dark')) || false
+
+// 是否播放音乐
+let isPlay = false
 
 // 判断是否为深色模式
 if (theme) {
@@ -130,23 +135,15 @@ main.addEventListener('scroll', e => {
 })
 
 // 音乐功能
-let isPlay = false
-// 监听音乐按钮点击事件
-document.querySelector('#music').addEventListener('click', function () {
-	// 判断音乐是否在播放
-	if (isPlay) {
-		// 播放音乐
-		music.pause()
-		this.src = 'assets/images/icon/play.svg'
-	} else {
-		// 暂停音乐
-		music.play()
-		this.src = 'assets/images/icon/pause.svg'
-	}
+music.addEventListener('click', () => {
+	// 设置音乐是否播放
+	isPlay ? audio.pause() : audio.play()
+	// 设置播放图标
+	music.src = `assets/images/icon/${isPlay ? 'play' : 'pause'}.svg`
 	isPlay = !isPlay
 })
 
-// 天气插件
+// 心知天气插件
 !(function (a, h, g, f, e, d, c, b) {
 	b = function () {
 		d = h.createElement(g)
