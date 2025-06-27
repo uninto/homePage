@@ -34,57 +34,62 @@ darkMode.addEventListener('click', () => {
 	localStorage.setItem('dark', theme)
 })
 
-// 声明一个函数,用于添加数据
-const addData = (parent, html) => {
-	const li = document.createElement('li')
-	li.innerHTML = html
-	parent.appendChild(li)
-}
-
 // 获取数据
-fetch('../data.json')
+fetch('/data.json')
 	.then(res => res.json())
 	.then(data => {
 		const { iconList, lineList, siteList } = data
-		//添加社交图标
-		for (const item of iconList) {
-			addData(
-				link,
-				`
-          <a href="${item.url}" target="_blank">
-            <img src="${item.icon}" alt="icon">
-          </a>
-        `
-			)
+
+		// 统一插入节点
+		const renderList = (container, items, renderItem) => {
+			const html = items.map(renderItem).join('')
+			container.insertAdjacentHTML('beforeend', html)
 		}
+
+		// 添加社交图标
+		renderList(
+			link,
+			iconList,
+			item => `
+      <li>
+        <a href="${item.url}" target="_blank">
+          <img src="${item.icon}" alt="icon">
+        </a>
+      </li>
+    `
+		)
+
 		// 添加时间轴
-		for (const item of lineList) {
-			addData(
-				line,
-				`
-          <div class="focus"></div>
-          <div>${item.time}</div>
-          <div>${item.text}</div>
-        `
-			)
-		}
+		renderList(
+			line,
+			lineList,
+			item => `
+      <li>
+        <div class="focus"></div>
+        <div>${item.time}</div>
+        <div>${item.text}</div>
+      </li>
+    `
+		)
+
 		// 添加站点
-		for (const item of siteList) {
-			addData(
-				site,
-				`
-          <a href="${item.url}" target="_blank">
-            <span class="status">${
-							item.status
-								? '<span style="color:#2ecc71">200</span>'
-								: '<span style="color:tomato">404</span>'
-						}</span>
-            <span style="font-size:18px">${item.name}</span><br>
-            <span style="color:#aaa">${item.content}</span>
-          </a>
-        `
-			)
-		}
+		renderList(
+			site,
+			siteList,
+			item => `
+      <a href="${item.url}" target="_blank">
+        <li>
+          <span class="status">
+            <span style="color:${item.status ? '#2ecc71' : 'tomato'}">
+              ${item.status ? '200' : '404'}
+            </span>
+          </span>
+          <span style="font-size:18px">${item.name}</span><br>
+          <span style="color:#aaa">${item.content}</span>
+        </li>
+      </a>
+    `
+		)
 	})
 
 // 点击页面切换
