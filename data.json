@@ -1,108 +1,136 @@
 {
-  "iconList": [
-    {
-      "icon": "assets/images/icon/mail.svg",
-      "url": "mailto:uninto@icloud.com"
-    },
-    {
-      "icon": "assets/images/icon/bilibili.svg",
-      "url": "https://b23.tv/iDh4oum"
-    },
-    {
-      "icon": "assets/images/icon/weibo.svg",
-      "url": "https://weibo.com/u/6476668327"
-    },
-    {
-      "icon": "assets/images/icon/github.svg",
-      "url": "https://github.com/uninto"
-    },
-    {
-      "icon": "assets/images/icon/telegram.svg",
-      "url": "https://t.me/uninto"
-    }
-  ],
-
-  "lineList": [
-    {
-      "time": "2023-11-25",
-      "text": "敬请期待"
-    },
-    {
-      "time": "2023-08-25",
-      "text": "ICP备案成功"
-    },
-    {
-      "time": "2023-08-17",
-      "text": "网安备案成功"
-    },
-    {
-      "time": "2022-10-22",
-      "text": "注册新域名"
-    },
-    {
-      "time": "2022-10-22",
-      "text": "注销所有备案"
-    },
-    {
-      "time": "2022-10-22",
-      "text": "域名出售"
-    },
-    {
-      "time": "2021-02-08",
-      "text": "独自完成第一个主页"
-    },
-    {
-      "time": "...",
-      "text": "..."
-    },
-    {
-      "time": "2018-01-06",
-      "text": "搭建第一个网站"
-    }
-  ],
-
-  "siteList": [
-    {
-      "name": "百度",
-      "content": "百度一下,你就知道",
-      "url": "https://www.baidu.com/",
-      "status": true
-    },
-    {
-      "name": "谷歌",
-      "content": "谷歌搜索",
-      "url": "https://www.google.com/",
-      "status": false
-    },
-    {
-      "name": "必应",
-      "content": "必应搜索",
-      "url": "https://cn.bing.com/",
-      "status": true
-    },
-    {
-      "name": "搜狗",
-      "content": "搜狗搜索",
-      "url": "https://sogou.com/",
-      "status": true
-    },
-    {
-      "name": "360",
-      "content": "360搜索",
-      "url": "https://www.so.com/",
-      "status": true
-    },
-    {
-      "name": "搜狗",
-      "content": "搜狗搜索",
-      "url": "https://sogou.com/",
-      "status": true
-    },
-    {
-      "name": "360",
-      "content": "360搜索",
-      "url": "https://www.so.com/",
-      "status": true
-    }
-  ]
+	"userInfo": {
+		"title": "个人主页",
+		"nickName": "景昇",
+		"motto": "心存敬畏 行有所止",
+		"aboutMe": "嗨！我是景昇，一个热爱前端开发的<s>小</s>大白，高三那年在教室里用手机扣出了本项目的最初版本，如今虽很少更新但从未放弃，追求极简轻量，因此项目不依赖于任何框架，努力做到更好！",
+		"image": "/assets/images/bg.jpg",
+		"avatar": "https://q1.qlogo.cn/g?b=qq&nk=898815960&s=640"
+	},
+	"iconList": [
+		{
+			"icon": "assets/images/mail.svg",
+			"url": "mailto:uninto@icloud.com"
+		},
+		{
+			"icon": "assets/images/github.svg",
+			"url": "https://github.com/uninto"
+		},
+		{
+			"icon": "assets/images/bilibili.svg",
+			"url": "https://b23.tv/iDh4oum"
+		},
+		{
+			"icon": "assets/images/telegram.svg",
+			"url": "https://t.me/uninto"
+		},
+		{
+			"icon": "assets/images/serve.svg",
+			"url": "/data.json"
+		}
+	],
+	"lineList": [
+		{
+			"time": "2025-07-01",
+			"text": "优化个人主页"
+		},
+		{
+			"time": "2025-06-13",
+			"text": "成为正式党员"
+		},
+		{
+			"time": "2025-06-07",
+			"text": "大学毕业"
+		},
+		{
+			"time": "2024-01-25",
+			"text": "重构版完成"
+		},
+		{
+			"time": "2023-08-25",
+			"text": "ICP备案成功"
+		},
+		{
+			"time": "2023-08-17",
+			"text": "网安备案成功"
+		},
+		{
+			"time": "2022-10-22",
+			"text": "注册新域名"
+		},
+		{
+			"time": "2022-10-22",
+			"text": "注销所有备案"
+		},
+		{
+			"time": "2022-10-22",
+			"text": "域名出售"
+		},
+		{
+			"time": "2021-02-08",
+			"text": "独自完成第一个主页"
+		},
+		{
+			"time": "...",
+			"text": "..."
+		},
+		{
+			"time": "2018-01-06",
+			"text": "搭建第一个网站"
+		}
+	],
+	"siteList": [
+		{
+			"name": "百度",
+			"content": "百度一下,你就知道",
+			"url": "https://www.baidu.com/",
+			"status": true
+		},
+		{
+			"name": "谷歌",
+			"content": "谷歌搜索",
+			"url": "https://www.google.com/",
+			"status": false
+		},
+		{
+			"name": "必应",
+			"content": "必应搜索",
+			"url": "https://cn.bing.com/",
+			"status": true
+		},
+		{
+			"name": "搜狗",
+			"content": "搜狗搜索",
+			"url": "https://sogou.com/",
+			"status": true
+		},
+		{
+			"name": "360",
+			"content": "360搜索",
+			"url": "https://www.so.com/",
+			"status": true
+		},
+		{
+			"name": "搜狗",
+			"content": "搜狗搜索",
+			"url": "https://sogou.com/",
+			"status": true
+		},
+		{
+			"name": "360",
+			"content": "360搜索",
+			"url": "https://www.so.com/",
+			"status": true
+		}
+	],
+	"linkList": [
+		{
+			"text": "豫ICP备2022025333号",
+			"url": "https://beian.miit.gov.cn"
+		},
+		{
+			"text": "豫公网安备41061102000322号",
+			"url": "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41061102000322"
+		}
+	]
 }

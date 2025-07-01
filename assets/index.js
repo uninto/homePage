@@ -13,14 +13,25 @@ const $ = dom => {
 
 const nav = $('nav')
 const main = $('main')
-const link = $('#link')
+const icon = $('#icon')
 const line = $('#line')
 const site = $('#site')
+const link = $('footer')
 const audio = $('audio')
 const music = $('#music')
 const darkMode = $('#darkMode')
 const dom = document.documentElement
 const sections = document.querySelectorAll('section')
+
+// 页面信息
+const pageInfo = {
+	title: $('title'),
+	nickName: $('#info h2'),
+	motto: $('#info h4'),
+	avatar: $('#avatar'),
+	aboutMe: $('#aboutMe'),
+	image: $('#image')
+}
 
 // 主题模式
 let theme = JSON.parse(localStorage.getItem('dark')) || false
@@ -31,14 +42,14 @@ let isPlay = false
 // 判断是否为深色模式
 if (theme) {
 	dom.toggleAttribute('dark')
-	darkMode.src = `assets/images/icon/moon.svg`
+	darkMode.src = `assets/images/moon.svg`
 }
 
 // 切换主题模式
 darkMode.addEventListener('click', () => {
 	theme = !theme
 	dom.toggleAttribute('dark')
-	darkMode.src = `assets/images/icon/${theme ? 'moon' : 'sun'}.svg`
+	darkMode.src = `assets/images/${theme ? 'moon' : 'sun'}.svg`
 	localStorage.setItem('dark', theme)
 })
 
@@ -46,17 +57,23 @@ darkMode.addEventListener('click', () => {
 fetch('/data.json')
 	.then(res => res.json())
 	.then(data => {
-		const { iconList, lineList, siteList } = data
+		const { userInfo, iconList, lineList, siteList, linkList } = data
+
+		// 填充页面信息
+		for (const key in userInfo) {
+			if (key === 'image') pageInfo[key].src = userInfo[key]
+			if (key === 'avatar') pageInfo[key].src = userInfo[key]
+			if (pageInfo[key]) pageInfo[key].innerHTML = userInfo[key]
+		}
 
 		// 统一插入节点
 		const renderList = (container, items, renderItem) => {
-			const html = items.map(renderItem).join('')
-			container.insertAdjacentHTML('beforeend', html)
+			container.innerHTML = items.map(renderItem).join('')
 		}
 
 		// 添加社交图标
 		renderList(
-			link,
+			icon,
 			iconList,
 			item => `
       <li>
@@ -85,16 +102,27 @@ fetch('/data.json')
 			site,
 			siteList,
 			item => `
+			<li>
+				<a href="${item.url}" target="_blank">
+					<div>
+						<span style="font-size:18px">${item.name}</span><br>
+						<span style="color:${item.status ? '#2ecc71' : 'tomato'}">
+							${item.status ? '200' : '404'}
+						</span>
+					</div>
+					<span style="color:#aaa">${item.content}</span>
+				</a>
+			</li>
+    `
+		)
+
+		// 添加底部链接
+		renderList(
+			link,
+			linkList,
+			item => `
       <a href="${item.url}" target="_blank">
-        <li>
-          <span class="status">
-            <span style="color:${item.status ? '#2ecc71' : 'tomato'}">
-              ${item.status ? '200' : '404'}
-            </span>
-          </span>
-          <span style="font-size:18px">${item.name}</span><br>
-          <span style="color:#aaa">${item.content}</span>
-        </li>
+				${item.text}
       </a>
     `
 		)
@@ -102,7 +130,7 @@ fetch('/data.json')
 
 // 点击页面切换
 nav.addEventListener('click', ({ target }) => {
-	// 事件委托,判断点击的元素是否为A标签
+	// 判断点击的元素是否为SPAN标签
 	if (target.tagName === 'SPAN') {
 		// 如果已是active，避免无效操作
 		if (target.classList.contains('active')) return
@@ -110,8 +138,7 @@ nav.addEventListener('click', ({ target }) => {
 		$('.active').classList.remove('active')
 		target.classList.add('active')
 		// 滚动到当前点击元素id值对应元素的offsetLeft处
-		const num = $(`[title='${target.id}']`).offsetLeft
-		main.scrollLeft = num
+		main.scrollLeft = $(`[title='${target.id}']`).offsetLeft
 	}
 })
 
@@ -139,47 +166,6 @@ music.addEventListener('click', () => {
 	// 设置音乐是否播放
 	isPlay ? audio.pause() : audio.play()
 	// 设置播放图标
-	music.src = `assets/images/icon/${isPlay ? 'play' : 'pause'}.svg`
+	music.src = `assets/images/${isPlay ? 'play' : 'pause'}.svg`
 	isPlay = !isPlay
-})
-
-// 心知天气插件
-!(function (a, h, g, f, e, d, c, b) {
-	b = function () {
-		d = h.createElement(g)
-		c = h.getElementsByTagName(g)[0]
-		d.src = e
-		d.charset = 'utf-8'
-		d.async = 1
-		c.parentNode.insertBefore(d, c)
-	}
-	a['SeniverseWeatherWidgetObject'] = f
-	a[f] ||
-		(a[f] = function () {
-			;(a[f].q = a[f].q || []).push(arguments)
-		})
-	a[f].l = +new Date()
-	if (a.attachEvent) {
-		a.attachEvent('onload', b)
-	} else {
-		a.addEventListener('load', b, false)
-	}
-})(
-	window,
-	document,
-	'script',
-	'SeniverseWeatherWidget',
-	'//cdn.sencdn.com/widget2/static/js/bundle.js?t=' +
-		parseInt((new Date().getTime() / 100000000).toString(), 10)
-)
-window.SeniverseWeatherWidget('show', {
-	flavor: 'bubble',
-	location: 'WX4FBXXFKE4F',
-	geolocation: true,
-	language: 'zh-Hans',
-	unit: 'c',
-	theme: 'auto',
-	token: 'ac1d036a-99f3-4f88-ae98-f795bb93a9f0',
-	hover: 'disabled',
-	container: 'tp-weather-widget'
 })
