@@ -1,5 +1,5 @@
 /* 
- * Author: 景昇
+ * Author: Mason
  * Email: uninto@icloud.com
  * Website: https://uninto.com/
  * GItHub: https://github.com/uninto/homePage
@@ -7,30 +7,87 @@
 */
 
 :root {
-	--body-color: #ecf0f3;
-	--main-color: #fff;
-	--shadow-color: #e6e6eb;
-	--text-color: #424242;
-	--other-color: #eee;
+	/* 微玻璃：冷灰渐变底 + 绿/青绿光斑，玻璃靠透明度、1px 玻璃边和顶部内高光
+	   层级：页面底 → 强玻璃（main）→ 轻玻璃（nav、footer）→ 小容器（卡片，无 blur） */
+	--body-color: #eceff3;
+	--bg-top: #eceff3;
+	--bg-bottom: #dfe4ea;
+	--orb-1: rgba(7, 193, 96, 0.22);
+	--orb-2: rgba(0, 168, 168, 0.14);
+	--main-color: rgba(255, 255, 255, 0.5);
+	--surface-color: rgba(255, 255, 255, 0.6);
+	--card-color: rgba(255, 255, 255, 0.5);
+	--focus-border-color: #f4f6f8;
+	--hover-color: rgba(255, 255, 255, 0.88);
+	--toast-color: rgba(255, 255, 255, 0.96);
+	--border-color: rgba(255, 255, 255, 0.78);
+	/* 小容器在近白面板上，白描边看不见，改用冷灰描边 */
+	--card-border: rgba(65, 79, 95, 0.12);
+	--hover-border: rgba(65, 79, 95, 0.45);
+	--highlight-color: rgba(255, 255, 255, 0.84);
+	--shadow-color: rgba(34, 48, 65, 0.06);
+	--text-color: #202a35;
+	--muted-color: #596775;
+	--other-color: #cfd6dd;
+	--avatar-color: #8a95a1;
+	/* 强调绿，文字与图形同色；作文字时对浅色面板只有约 2.2:1 */
+	--accent-color: #07c160;
+	--accent-soft: rgba(7, 193, 96, 0.14);
+	--danger-color: #ad352f;
 	--icon-color: invert(0%);
+	color-scheme: light;
 }
 
 [dark] {
-	--body-color: #343434;
-	--main-color: #484848;
-	--shadow-color: #303030;
-	--text-color: #ccc;
-	--other-color: #aaa;
-	--icon-color: invert(60%);
+	--body-color: #12161b;
+	--bg-top: #1b2026;
+	--bg-bottom: #12161b;
+	--orb-1: rgba(7, 193, 96, 0.14);
+	--orb-2: rgba(0, 168, 168, 0.08);
+	--main-color: rgba(31, 37, 44, 0.72);
+	--surface-color: rgba(34, 40, 47, 0.82);
+	--card-color: rgba(21, 27, 33, 0.45);
+	--focus-border-color: #1f252c;
+	--hover-color: rgba(44, 51, 59, 0.86);
+	--toast-color: rgba(34, 40, 47, 0.96);
+	--border-color: rgba(255, 255, 255, 0.1);
+	--card-border: rgba(255, 255, 255, 0.12);
+	--hover-border: rgba(255, 255, 255, 0.36);
+	--highlight-color: rgba(255, 255, 255, 0.06);
+	--shadow-color: rgba(0, 0, 0, 0.24);
+	--text-color: #edf1f5;
+	--muted-color: #acb7c3;
+	--other-color: #3a434d;
+	--avatar-color: #5a6470;
+	--accent-color: #07c160;
+	--accent-soft: rgba(7, 193, 96, 0.16);
+	--danger-color: #de6670;
+	--icon-color: invert(90%);
+	color-scheme: dark;
 }
 
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: 'GenSenRounded';
-	transition: background-color 0.8s ease, box-shadow 0.8s ease, border 0.8s ease;
+	font-family: 'GenSenRounded', 'PingFang SC', 'Microsoft YaHei', sans-serif;
 	-webkit-tap-highlight-color: transparent;
+}
+
+/* 过渡只给会交互的元素；切主题由 View Transitions 整页交叉淡入，不让几百个元素各自过渡 */
+a,
+button,
+nav img,
+#image,
+#avatar,
+#site-list li {
+	transition:
+		background-color 0.2s ease,
+		box-shadow 0.2s ease,
+		border-color 0.2s ease,
+		color 0.2s ease,
+		transform 0.2s ease,
+		opacity 0.3s ease-out;
 }
 
 a {
@@ -38,44 +95,124 @@ a {
 	text-decoration: none;
 }
 
+/* 焦点不画外圈：落在元素自身边缘，补底色 + 1px 内描边 */
+:focus-visible {
+	outline: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+	background-color: var(--hover-color);
+	box-shadow: inset 0 0 0 1px var(--text-color);
+}
+
+::selection {
+	background: var(--accent-soft);
+	color: var(--text-color);
+}
+
 li {
 	list-style: none;
 }
 
 body {
-	height: 100vh;
+	min-height: 100vh;
+	min-height: 100svh;
+	padding: 28px 0 76px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	background-color: var(--body-color);
+	background-image:
+		/* 两团 260px 光斑压在主卡右上、左下两角后面 */
+		radial-gradient(
+			circle 260px at calc(50% + 190px) 30%,
+			var(--orb-1),
+			transparent 70%
+		),
+		radial-gradient(
+			circle 260px at calc(50% - 190px) 75%,
+			var(--orb-2),
+			transparent 70%
+		),
+		linear-gradient(160deg, var(--bg-top), var(--bg-bottom));
+	background-attachment: fixed;
+	color: var(--text-color);
+}
+
+nav,
+main,
+footer {
+	border: 1px solid var(--border-color);
+	box-shadow:
+		inset 0 1px 0 var(--highlight-color),
+		0 8px 20px var(--shadow-color);
+	-webkit-backdrop-filter: blur(14px);
+	backdrop-filter: blur(14px);
 }
 
 nav {
 	width: 350px;
 	height: 50px;
 	max-width: 85%;
-	background-color: var(--main-color);
+	background-color: var(--surface-color);
 	margin-bottom: 15px;
-	box-shadow: 1px 1px 1px 1px var(--shadow-color);
+	padding: 5px;
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
-	border-radius: 8px;
+	border-radius: 18px;
+	position: relative;
 }
 
-nav span {
-	font-size: large;
-	transition: all 0.3s ease;
+/* 选中底色是一块在导航项之间滑动的指示块，按钮只改文字色 */
+.nav-pill {
+	position: absolute;
+	left: 0;
+	top: 0;
+	border-radius: 12px;
+	background-color: var(--accent-soft);
+	pointer-events: none;
+}
+
+/* 首次定位后才加 .ready：打开页面时指示块直接在原位，不从左边滑进来 */
+.nav-pill.ready {
+	transition:
+		transform 0.25s cubic-bezier(0.33, 1, 0.68, 1),
+		width 0.25s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+nav button {
+	position: relative;
+	display: flex;
+	font: inherit;
+	color: inherit;
+	background: none;
+	border: 0;
+	border-radius: 12px;
 	cursor: pointer;
 }
 
+nav [data-page] {
+	font-size: 16px;
+	padding: 6px 8px;
+}
+
 nav img {
+	width: 28px;
+	height: 28px;
+	padding: 3px;
 	filter: var(--icon-color);
 }
 
 .active {
-	color: #2ecc71;
+	color: var(--accent-color);
+}
+
+/* 选中项的底色来自下方指示块，聚焦时不再盖一层底色 */
+nav .active:focus-visible {
+	background-color: transparent;
 }
 
 main {
@@ -84,17 +221,22 @@ main {
 	max-width: 85%;
 	position: relative;
 	background-color: var(--main-color);
-	box-shadow: 1px 1px 1px 1px var(--shadow-color);
 	scroll-snap-type: x mandatory;
 	scroll-behavior: smooth;
 	display: flex;
 	overflow: auto;
-	border-radius: 8px;
+	border-radius: 22px;
+	/* 强玻璃：同屏唯一的主卡 */
+	box-shadow:
+		inset 0 1px 0 var(--highlight-color),
+		0 12px 28px var(--shadow-color);
+	-webkit-backdrop-filter: blur(18px);
+	backdrop-filter: blur(18px);
 }
 
 main::-webkit-scrollbar,
 #aboutMe::-webkit-scrollbar,
-#site::-webkit-scrollbar {
+#site-list::-webkit-scrollbar {
 	display: none;
 }
 
@@ -109,16 +251,27 @@ section {
 	scroll-snap-stop: always;
 }
 
+/* 图片由 JS 在 load 后加 .loaded 淡入，不在入场动画结束后突然冒出来 */
+#image:not(.loaded),
+#avatar:not(.loaded) {
+	opacity: 0;
+}
+
 #image {
 	width: 100%;
 	height: 50%;
 	object-fit: cover;
-	border-radius: 8px;
+	border-radius: 16px;
 }
 
 #avatar {
 	width: 90px;
+	height: 90px;
+	object-fit: cover;
+	border: 4px solid var(--surface-color);
+	box-shadow: 0 6px 16px var(--shadow-color);
 	border-radius: 50%;
+	background-color: var(--avatar-color);
 	position: absolute;
 	top: 40%;
 }
@@ -134,85 +287,128 @@ section {
 	color: var(--text-color);
 }
 
-#icon {
+/* 语义上昵称为 h1、关于页小节为 h2，字号沿用原 h2/h3 的浏览器默认值 */
+#info h1 {
+	font-size: 1.5em;
+}
+
+.item h2 {
+	font-size: 1.17em;
+}
+
+#info p {
+	font-size: 1.1em;
+}
+
+#social-links {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-#icon img {
+#social-links img {
 	width: 30px;
 	filter: var(--icon-color);
+}
+
+#social-links a {
+	display: flex;
+	padding: 5px;
+	border-radius: 12px;
 }
 
 .item {
 	width: 100%;
 	height: 100%;
 	padding: 10px;
-	box-shadow: inset 0 0 2px 3px var(--shadow-color);
+	background-color: var(--card-color);
+	border: 1px solid var(--card-border);
+	box-shadow: inset 0 1px 0 var(--highlight-color);
 	color: var(--text-color);
-	border-radius: 8px;
+	border-radius: 16px;
 	line-height: 1.3;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
 }
 
 #aboutMe {
-	height: 220px;
-	overflow-y: scroll;
+	flex: 0 1 auto;
+	min-height: 0;
+	margin: 8px 0 16px;
+	overflow-y: auto;
+	line-height: 1.6;
+	text-indent: 2em;
+}
+
+.credit {
+	font-size: 13px;
+	font-weight: 600;
+	margin-top: 6px;
+}
+
+.credit a {
+	text-decoration: underline;
+	text-underline-offset: 3px;
 }
 
 #project {
 	height: auto;
 	flex-direction: row;
+	justify-content: space-between;
 	align-items: center;
 	margin-top: 15px;
 }
 
-#project div {
+/* 只剩一个仓库：图标 + 仓库名做成一枚可点的小胶囊，看得出链到哪，点击区域也比单个图标大 */
+#project a {
 	display: flex;
-	gap: 10px;
-	line-height: 1;
+	align-items: center;
+	gap: 6px;
+	min-height: 32px;
+	padding: 0 10px;
+	border-radius: 10px;
+	background-color: var(--card-color);
+	color: var(--muted-color);
+	font-size: 13px;
 }
 
 #project img {
-	height: 25px;
+	height: 18px;
 	filter: var(--icon-color);
 }
 
-#line {
+#history-list {
 	height: 100%;
 	padding-left: 10px;
 	scroll-snap-type: y mandatory;
 	overflow-y: scroll;
 }
 
-#line::-webkit-scrollbar {
+#history-list::-webkit-scrollbar {
 	width: 5px;
 }
 
-#line::-webkit-scrollbar-track {
+#history-list::-webkit-scrollbar-track {
 	border-radius: 8px;
 	background-color: var(--body-color);
 }
 
-#line::-webkit-scrollbar-thumb {
+#history-list::-webkit-scrollbar-thumb {
 	border-radius: 8px;
-	background-color: #ccc;
+	background-color: var(--other-color);
 }
 
-#line li {
+#history-list li {
 	position: relative;
 	padding: 15px 0px 0px 15px;
 	border-left: 3px solid var(--other-color);
 	scroll-snap-align: end;
-	color: #aaa;
+	color: var(--muted-color);
 }
 
-#line li:first-child {
-	color: #2ecc71;
+#history-list li:first-child {
+	color: var(--accent-color);
 	font-weight: bolder;
 }
 
@@ -221,56 +417,129 @@ section {
 	height: 15px;
 	border-radius: 22px;
 	background-color: var(--other-color);
-	border: 3px solid var(--main-color);
+	border: 3px solid var(--focus-border-color);
 	position: absolute;
 	left: -9px;
 	top: 50%;
 }
 
-#line li:first-child .focus {
-	background-color: #2ecc71;
-	animation: focus 1.8s ease infinite;
+#history-list li:first-child .focus {
+	background-color: var(--accent-color);
 }
 
-#site {
+/* 最新一项的涟漪：一圈描边从圆点外沿扩散淡出。只动 transform/opacity，走合成层，不每帧重绘玻璃面板
+   最大 1.6 倍（半径约 12px），正好不被列表左边缘裁掉 */
+#history-list li:first-child .focus::after {
+	content: '';
+	position: absolute;
+	inset: -3px;
+	border-radius: 50%;
+	border: 2px solid var(--accent-color);
+	opacity: 0;
+	pointer-events: none;
+	animation: ripple 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+#site-list {
 	width: 100%;
+	display: grid;
+	gap: 12px;
+	/* 底部渐隐，滚动时卡片不被面板边缘硬切；底部留白与渐隐等高，滚到底时最后一张完整可见 */
+	padding: 2px 2px 16px;
+	-webkit-mask-image: linear-gradient(#000 calc(100% - 16px), transparent);
+	mask-image: linear-gradient(#000 calc(100% - 16px), transparent);
 	overflow: auto;
 }
 
-#site li {
-	height: 60px;
-	cursor: pointer;
-	margin-bottom: 15px;
-	border: 2px solid var(--other-color);
-	overflow: hidden;
-	border-radius: 8px;
+#site-list li {
+	background-color: var(--card-color);
+	border: 1px solid var(--card-border);
+	box-shadow: inset 0 1px 0 var(--highlight-color);
+	border-radius: 16px;
 }
 
-#site li:last-child {
-	margin-bottom: 0;
-}
-
-#site div {
+#site-list a {
 	display: flex;
-	justify-content: space-between;
+	align-items: center;
+	gap: 12px;
+	min-height: 84px;
+	padding: 14px 16px;
+	border-radius: inherit;
+	line-height: 1.5;
 }
 
-#site a {
-	display: block;
-	padding: 10px;
-	line-height: 40px;
-	transition: line-height 0.2s ease-in;
+.site-info {
+	display: grid;
+	flex: 1;
+	gap: 4px;
+	min-width: 0;
+	overflow-wrap: anywhere;
 }
 
-#site a:hover {
-	line-height: 20px;
+.site-name {
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.site-domain {
+	font-size: 13px;
+	color: var(--muted-color);
+}
+
+.site-status {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	flex-shrink: 0;
+	font-size: 12px;
+	font-variant-numeric: tabular-nums;
+}
+
+.site-status::before {
+	content: '';
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background-color: var(--site-status-color, var(--muted-color));
+}
+
+#site-list li:focus-within {
+	background-color: var(--hover-color);
+	border-color: var(--text-color);
+}
+
+@media (hover: hover) {
+	nav button:not(.active):hover,
+	#social-links a:hover,
+	#project a:hover,
+	#site-list li:hover {
+		background-color: var(--hover-color);
+	}
+
+	/* 悬停不移动：描边由淡转实 */
+	#site-list li:hover {
+		border-color: var(--hover-border);
+	}
+
+	#project a:hover {
+		color: var(--text-color);
+	}
+}
+
+nav [data-page]:active,
+nav img:active,
+#social-links a:active,
+#project a:active,
+#site-list li:active {
+	transform: scale(0.98);
 }
 
 footer {
 	width: 100%;
 	padding: 10px;
-	background-color: var(--main-color);
-	box-shadow: -1px -1px 1px var(--shadow-color);
+	background-color: var(--surface-color);
+	box-shadow: inset 0 1px 0 var(--highlight-color);
+	border-width: 1px 0 0;
 	font-size: 13px;
 	position: fixed;
 	bottom: 0px;
@@ -280,21 +549,138 @@ footer {
 	gap: 10px;
 }
 
+#toast {
+	position: fixed;
+	left: 50%;
+	bottom: 60px;
+	transform: translateX(-50%);
+	z-index: 10;
+	max-width: calc(100% - 40px);
+	padding: 8px 16px;
+	border-radius: 12px;
+	border: 1px solid var(--border-color);
+	/* 浮层比页面面板更实 */
+	background-color: var(--toast-color);
+	box-shadow: 0 8px 20px var(--shadow-color);
+	-webkit-backdrop-filter: blur(18px);
+	backdrop-filter: blur(18px);
+	color: var(--text-color);
+	font-size: 14px;
+	/* 出现时淡入并从 0.96 放大，隐藏时反向；allow-discrete 让 hidden 的 display 切换等淡出结束 */
+	transition:
+		opacity 0.2s ease,
+		scale 0.2s cubic-bezier(0.33, 1, 0.68, 1),
+		display 0.2s allow-discrete;
+}
+
+#toast[hidden] {
+	display: none;
+	opacity: 0;
+	scale: 0.96;
+}
+
+@starting-style {
+	#toast:not([hidden]) {
+		opacity: 0;
+		scale: 0.96;
+	}
+}
+
+@media (min-width: 768px) {
+	nav,
+	main {
+		width: 390px;
+	}
+
+	main {
+		height: 500px;
+	}
+}
+
+/* 入场：磨砂成形。玻璃从透明成形 600ms，内容随后淡入（玻璃里的文字不加 blur，会卡）；--i 是顺序，每块晚 80ms
+   淡入只加在子元素上：面板自身加 filter/opacity 会成为 backdrop root，backdrop-filter 在动画期间失效、结束时跳变
+   .enter 由 JS 在页面处于前台时才加，不加类就是终态 */
+nav.enter {
+	--i: 0;
+}
+
+main.enter {
+	--i: 1;
+}
+
+footer.enter {
+	--i: 2;
+}
+
+.enter {
+	animation: frost 0.6s cubic-bezier(0.33, 1, 0.68, 1) calc(var(--i) * 80ms)
+		backwards;
+}
+
+.enter > * {
+	animation: content-in 0.3s ease-out calc(var(--i) * 80ms + 200ms) backwards;
+}
+
+/* 降低透明度：去 blur、面板改实，保留描边和阴影 */
+@media (prefers-reduced-transparency: reduce) {
+	nav,
+	main,
+	footer,
+	#toast {
+		-webkit-backdrop-filter: none;
+		backdrop-filter: none;
+		background-color: var(--body-color);
+	}
+}
+
+/* 切主题：新主题由 JS 用 clip-path 从按钮处扩散揭开，关掉默认交叉淡入，免得新旧半透明叠在一起 */
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation: none;
+	mix-blend-mode: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		transition: none !important;
+		animation: none !important;
+		scroll-behavior: auto !important;
+	}
+}
+
 @font-face {
 	font-family: 'GenSenRounded';
 	src: url('GenSenRounded-R.woff2');
+	/* 字体近 1MB，先用系统字体显示，下载完再替换，避免首屏文字空白 */
+	font-display: swap;
 }
 
-@keyframes focus {
+@keyframes frost {
+	from {
+		background-color: transparent;
+		border-color: transparent;
+		box-shadow: none;
+		-webkit-backdrop-filter: blur(0);
+		backdrop-filter: blur(0);
+	}
+}
+
+@keyframes content-in {
+	from {
+		opacity: 0;
+	}
+}
+
+/* 前 70% 扩散淡出，后 30% 停顿；减少动态效果时由上方规则关闭，只剩静态绿点 */
+@keyframes ripple {
 	0% {
-		box-shadow: 0px 0px 0px 0px;
+		transform: scale(1);
+		opacity: 0.6;
 	}
 
-	50% {
-		box-shadow: 0px 0px 0px 3px #9ef9a1;
-	}
-
+	70%,
 	100% {
-		box-shadow: 0px 0px 0px 0px;
+		transform: scale(1.6);
+		opacity: 0;
 	}
 }

@@ -1,87 +1,102 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 	<head>
-		<title></title>
-		<meta
-			charset="utf-8"
-			name="viewport"
-			content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-		/>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>个人主页</title>
 		<link rel="stylesheet" href="assets/style.css" />
+		<script src="assets/index.js" defer></script>
 	</head>
 
 	<body>
 		<nav>
-			<span id="home" class="active">首页</span>
-			<span id="about">关于</span>
-			<span id="timeline">历程</span>
-			<span id="website">站点</span>
-			<img src="assets/images/play.svg" id="music" alt="music" />
-			<img src="assets/images/sun.svg" id="darkMode" alt="darkMode" />
+			<span class="nav-pill" aria-hidden="true"></span>
+			<button type="button" data-page="home" class="active" aria-current="page">
+				首页
+			</button>
+			<button type="button" data-page="about">关于</button>
+			<button type="button" data-page="history">历程</button>
+			<button type="button" data-page="sites">站点</button>
+			<button
+				type="button"
+				id="music-toggle"
+				aria-label="背景音乐"
+				aria-pressed="false"
+			>
+				<img src="assets/images/play.svg" alt="" />
+			</button>
+			<button
+				type="button"
+				id="darkMode"
+				aria-label="深色主题"
+				aria-pressed="false"
+			>
+				<img src="assets/images/sun.svg" alt="" />
+			</button>
 		</nav>
 
 		<main class="scrollbar">
-			<section title="home">
-				<img id="image" />
-				<img id="avatar" onclick="alert('戳我干嘛 ￣へ￣')" />
+			<section id="home">
+				<!-- 头图直接写地址，和 data.json 并行下载；data.json 的 image 仍会覆盖它 -->
+				<img
+					id="image"
+					src="assets/images/bg.webp"
+					alt=""
+					width="900"
+					height="600"
+					fetchpriority="high"
+				/>
+				<img id="avatar" alt="头像" />
 				<div id="info">
-					<h2></h2>
-					<h4></h4>
+					<h1></h1>
+					<p></p>
 				</div>
-				<div id="icon"></div>
+				<div id="social-links"></div>
 			</section>
-			<section title="about">
+			<section id="about">
 				<div class="item">
-					<h3># 关于我</h3>
-					<div id="aboutMe" style="text-indent: 2em"></div>
-					<h3># 特别感谢</h3>
-					<h5>
+					<h2># 关于我</h2>
+					<div id="aboutMe"></div>
+					<h2># 特别感谢</h2>
+					<p class="credit">
 						- 图标来自:
-						<a
-							href="https://github.com/Remix-Design/RemixIcon"
-							target="_blank"
-							style="text-decoration: underline"
-						>
+						<a href="https://github.com/Remix-Design/RemixIcon" target="_blank">
 							REMIX ICON
 						</a>
-					</h5>
-					<h5>
+					</p>
+					<p class="credit">
 						- 字体来自:
-						<a
-							href="https://github.com/ButTaiwan/gensen-font"
-							target="_blank"
-							style="text-decoration: underline"
-						>
+						<a href="https://github.com/ButTaiwan/gensen-font" target="_blank">
 							源泉圆体
 						</a>
-					</h5>
+					</p>
 				</div>
 				<div id="project" class="item">
-					<h3># 项目地址</h3>
-					<div>
-						<a href="https://gitee.com/uninto/homePage" target="_blank">
-							<img src="assets/images/gitee-fill.svg" alt="gitee" />
-						</a>
-						<a href="https://github.com/uninto/homePage" target="_blank">
-							<img src="assets/images/github-fill.svg" alt="github" />
-						</a>
-					</div>
+					<h2># 项目地址</h2>
+					<a
+						href="https://github.com/uninto/homePage"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<img src="assets/images/git-repository.svg" alt="GitHub" />
+						<span>uninto/homePage</span>
+					</a>
 				</div>
 			</section>
-			<section title="timeline">
+			<section id="history">
 				<div class="item">
-					<ul id="line"></ul>
+					<ul id="history-list"></ul>
 				</div>
 			</section>
-			<section title="website">
-				<ul id="site"></ul>
+			<section id="sites">
+				<ul id="site-list"></ul>
 			</section>
 		</main>
-		<footer></footer>
-		<audio preload="load" id="music" loop="loop">
+		<footer id="filing-links"></footer>
+		<div id="toast" role="status" aria-live="polite" hidden></div>
+		<audio preload="none" id="music-audio" loop="loop">
 			<!-- 未来音乐链接可能会失效，可自行更换 -->
 			<source src="https://uninto.com/runfree.mp3" />
 		</audio>
-		<script src="assets/index.js"></script>
 	</body>
 </html>

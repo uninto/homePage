@@ -1,11 +1,11 @@
 {
 	"userInfo": {
 		"title": "个人主页",
-		"nickName": "景昇",
+		"nickName": "Mason",
 		"motto": "心存敬畏 行有所止",
-		"aboutMe": "嗨！我是景昇，一个热爱前端开发的<s>小</s>大白，高三那年在教室里用手机扣出了本项目的最初版本，如今虽很少更新但从未放弃，追求极简轻量，因此项目不依赖于任何框架，努力做到更好！",
-		"image": "/assets/images/bg.jpg",
-		"avatar": "https://q1.qlogo.cn/g?b=qq&nk=898815960&s=640"
+		"aboutMe": "嗨！我是Mason，一个热爱前端开发的<s>小</s>大白，高三那年在教室里用手机扣出了本项目的最初版本，如今虽很少更新但从未放弃，追求极简轻量，因此项目不依赖于任何框架，努力做到更好！",
+		"image": "assets/images/bg.webp",
+		"avatar": "https://q1.qlogo.cn/g?b=qq&nk=898815960&s=100"
 	},
 	"iconList": [
 		{
@@ -17,30 +17,22 @@
 			"url": "https://github.com/uninto"
 		},
 		{
-			"icon": "assets/images/bilibili.svg",
-			"url": "https://b23.tv/iDh4oum"
+			"icon": "assets/images/linuxdo.svg",
+			"url": "https://linux.do/u/emo/"
 		},
 		{
-			"icon": "assets/images/telegram.svg",
-			"url": "https://t.me/uninto"
+			"icon": "assets/images/tiktok.svg",
+			"url": "https://www.douyin.com/user/MS4wLjABAAAAEmBePZZ2W7RaR-utZFO9SWiG7mb-0z22k43ZO5WnVgLBxP4W_CaOch9rajILK4DN"
 		},
 		{
 			"icon": "assets/images/serve.svg",
-			"url": "/data.json"
+			"url": "data.json"
 		}
 	],
 	"lineList": [
 		{
 			"time": "2025-07-01",
 			"text": "优化个人主页"
-		},
-		{
-			"time": "2025-06-13",
-			"text": "成为正式党员"
-		},
-		{
-			"time": "2025-06-07",
-			"text": "大学毕业"
 		},
 		{
 			"time": "2024-01-25",
@@ -81,46 +73,29 @@
 	],
 	"siteList": [
 		{
-			"name": "百度",
-			"content": "百度一下,你就知道",
-			"url": "https://www.baidu.com/",
-			"status": true
+			"name": "MSTI",
+			"content": "精神状态指数",
+			"url": "https://msti.uninto.com/"
 		},
 		{
-			"name": "谷歌",
-			"content": "谷歌搜索",
-			"url": "https://www.google.com/",
-			"status": false
+			"name": "Codex-ID",
+			"content": "codex多账号管理",
+			"url": "https://codexs.uninto.com/"
 		},
 		{
-			"name": "必应",
-			"content": "必应搜索",
-			"url": "https://cn.bing.com/",
-			"status": true
+			"name": "PacPic",
+			"content": "本地图片转换压缩",
+			"url": "https://pac.uninto.com/"
 		},
 		{
-			"name": "搜狗",
-			"content": "搜狗搜索",
-			"url": "https://sogou.com/",
-			"status": true
+			"name": "HY-MT2-1.8B",
+			"content": "自部署翻译服务",
+			"url": "https://tl.uninto.com/"
 		},
 		{
-			"name": "360",
-			"content": "360搜索",
-			"url": "https://www.so.com/",
-			"status": true
-		},
-		{
-			"name": "搜狗",
-			"content": "搜狗搜索",
-			"url": "https://sogou.com/",
-			"status": true
-		},
-		{
-			"name": "360",
-			"content": "360搜索",
-			"url": "https://www.so.com/",
-			"status": true
+			"name": "Notes",
+			"content": "便签墙",
+			"url": "https://notes.uninto.com/"
 		}
 	],
 	"linkList": [
