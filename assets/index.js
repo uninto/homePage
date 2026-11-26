@@ -13,7 +13,7 @@ const $ = dom => {
 
 const nav = $('nav')
 const main = $('main')
-const socialLinks = $('#social-links')
+const socialLinks = $('#profile-links')
 const historyList = $('#history-list')
 const sites = $('#site-list')
 const filingLinks = $('#filing-links')

@@ -300,19 +300,19 @@ section {
 	font-size: 1.1em;
 }
 
-#social-links {
+#profile-links {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-#social-links img {
+#profile-links img {
 	width: 30px;
 	filter: var(--icon-color);
 }
 
-#social-links a {
+#profile-links a {
 	display: flex;
 	padding: 5px;
 	border-radius: 12px;
@@ -510,7 +510,7 @@ section {
 
 @media (hover: hover) {
 	nav button:not(.active):hover,
-	#social-links a:hover,
+	#profile-links a:hover,
 	#project a:hover,
 	#site-list li:hover {
 		background-color: var(--hover-color);
@@ -528,7 +528,7 @@ section {
 
 nav [data-page]:active,
 nav img:active,
-#social-links a:active,
+#profile-links a:active,
 #project a:active,
 #site-list li:active {
 	transform: scale(0.98);
